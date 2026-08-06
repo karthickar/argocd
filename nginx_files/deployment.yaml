@@ -4,9 +4,9 @@ metadata:
   name: nginx-deployment
   labels:
     app: nginx
+  namespace: default
 spec:
   replicas: 1
-  namespace: default
   selector:
     matchLabels:
       app: nginx
