@@ -1,0 +1,7 @@
+apiVersion: k3d.io/v1alpha2
+kind: simple
+options:
+  k3s:
+    extraServerArgs:
+      - --tls-san=fe80::140e:bea6:9bc9:9346
+    extraAgentArgs: []
