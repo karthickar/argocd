@@ -3,5 +3,5 @@ kind: simple
 options:
   k3s:
     extraServerArgs:
-      - --tls-san=fe80::140e:bea6:9bc9:9346
+      - --tls-san=xxxx
     extraAgentArgs: []
