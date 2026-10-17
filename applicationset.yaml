@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: nginx
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - cluster: rancher-desktop
+        url: https://kubernetes.default.svc
+  template:
+    metadata:
+      name: '{{.cluster}}-nginx'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/karthickar/argocd.git 
+        targetRevision: HEAD
+        path: nginx_files/
+      destination:
+        server: '{{.url}}'
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
